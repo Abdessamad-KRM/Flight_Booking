@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageButton
+import androidx.fragment.app.commit
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var flightAdapter: FlightAdapter
     private lateinit var btn_back: ImageButton
+    private var isDualPane = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewFlights)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
+        val ticketContainer: FrameLayout? = findViewById(R.id.ticket_container)
+        isDualPane = (ticketContainer != null)
 
         val flightList = mutableListOf<Flight>(
             Flight("IndiGo", R.drawable.ic_indigo,R.drawable.logo_indigo, "DEL", "06:30", "Delhi International Airport", "BLR", "10:45", "Bengaluru Airport India", "04h 15m", "6,500", "Paid Meal", "20 December 2022", "Rahul Sharma", "Economy", "6E-3421", "05:30 AM", "B3", "T1", "12C", "01 Adult"),
@@ -29,9 +35,18 @@ class MainActivity : AppCompatActivity() {
         )
 
         flightAdapter = FlightAdapter(flightList) { flight ->
-            val intent = Intent(this, TicketActivity::class.java)
-            intent.putExtra("FLIGHT_DATA", flight)
-            startActivity(intent)
+            if (isDualPane) {
+                // Mode PAYSAGE: Charger le fragment à droite
+                val fragment = TicketFragment.newInstance(flight)
+                supportFragmentManager.commit {
+                    replace(R.id.ticket_container, fragment)
+                }
+            } else {
+                // Mode PORTRAIT: Lancer la nouvelle activité
+                val intent = Intent(this, TicketActivity::class.java)
+                intent.putExtra("FLIGHT_DATA", flight)
+                startActivity(intent)
+            }
         }
         recyclerView.adapter = flightAdapter
         btn_back = findViewById(R.id.back_button)
