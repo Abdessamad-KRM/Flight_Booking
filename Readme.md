@@ -1,10 +1,26 @@
-# Mon Projet d'Application (Nom à changer)
+# Flight Booking app
 
-Ceci est un simple projet Android pour [**Décrivez brièvement votre projet ici, par exemple : "une interface de réservation de billets d'avion"**].
+![Static Badge](https://img.shields.io/badge/Langage-Kotlin-blueviolet?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/UI-XML_Layouts-blue?style=for-the-badge)
+
+Un projet de concept d'interface utilisateur (UI) pour une application Android de réservation de billets d'avion.
+
+Ce projet démontre une interface utilisateur réactive (responsive) qui s'adapte à différentes tailles d'écran (téléphones, tablettes) et à différentes orientations (portrait, paysage).
+
+## 📖 Table des matières
+
+* [📱 Aperçus](#-aperçus)
+* [✨ Fonctionnalités](#-fonctionnalités)
+* [🛠️ Technologies et Outils](#️-technologies-et-outils)
+* [🚀 Lancer le projet](#-lancer-le-projet)
+* [📜 Licence](#-licence)
+
+---
 
 ## 📱 Aperçus
 
-Le projet gère les orientations portrait et paysage pour les téléphones et les tablettes.
+L'application gère les configurations portrait et paysage pour les téléphones et les tablettes, en utilisant des layouts et des ressources distincts.
 
 <table>
   <tr>
@@ -25,15 +41,19 @@ Le projet gère les orientations portrait et paysage pour les téléphones et le
   </tr>
 </table>
 
-## 🛠️ Technologies utilisées
+---
 
-* Kotlin
-* XML Layouts
-* Android SDK
+## ✨ Fonctionnalités
 
-## 🚀 Lancer le projet
+* **Interface Réactive :** Les layouts s'adaptent automatiquement aux écrans de téléphone et de tablette.
+* **Gestion de l'orientation :** Des vues optimisées pour les modes portrait et paysage.
+* **Ressources visuelles :** Inclut des icônes personnalisées (avion, ticket, personne) et des logos de compagnies aériennes (Emirates, IndiGo, SpiceJet, Vistara).
+* **Structure de projet propre :** Organisation claire des ressources `drawable` et `layout`.
 
-1.  Clonez ce dépôt.
-2.  Ouvrez le projet avec Android Studio.
-3.  Lancez la compilation (Build > Make Project).
-4.  Exécutez l'application sur un émulateur ou un appareil physique.
+---
+
+## 🛠️ Technologies et Outils
+
+* **Langage :** Kotlin
+* **UI :** Android XML Layouts
+* **Build :** Gradle (avec Kotlin DSL `.kts`)
